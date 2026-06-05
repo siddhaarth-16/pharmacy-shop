@@ -69,8 +69,7 @@ router.get('/orders', async (req, res) => {
 
 // Update Order Status
 router.put('/orders/:id', async (req, res) => {
-  try {
-    const { status } = req.body;
+  try {\n    const { status } = req.body;
     const connection = await pool.getConnection();
     await connection.execute('UPDATE orders SET status = ? WHERE id = ?', [status, req.params.id]);
     connection.release();
@@ -81,4 +80,4 @@ router.put('/orders/:id', async (req, res) => {
   }
 });
 
-module.module = router;
+module.exports = router;
